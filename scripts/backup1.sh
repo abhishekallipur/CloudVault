@@ -37,6 +37,19 @@ do
             read -p "enter the file name to download" filenamedownload
             aws s3 cp s3://$bucket/$filenamedownload .
             ;;
+        5)
+            echo "this are the file in the bucket $bucket"
+            aws s3 ls s3://"$bucket"
+            read -p "enter the file you want to delete :" filenamedelete
+            aws s3 rm "s3://$bucket/$filenamedelete"
+            ;;
+        6) 
+            read -p "enter the name of the bucket" bucketname
+            aws s3 mb "s3://$bucket"
+            ;;
+        7)
+            exit 0
+            ;;
     esac
     echo ""
 done
